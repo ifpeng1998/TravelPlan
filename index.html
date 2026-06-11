@@ -153,61 +153,78 @@
     h3 { margin: 0; font-size: 22px; }
     .subtle { max-width: 620px; margin: 0; color: var(--muted); }
 
-    .summary-grid {
+    .overview-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
     }
-    .summary-card, .panel, .day-card, .museum-card, .food-card, .check-card {
+    .overview-day, .panel, .day-card, .museum-card, .food-card, .check-card {
       background: var(--card);
       border: 1px solid var(--line);
       box-shadow: var(--shadow);
     }
-    .summary-card { padding: 22px; border-radius: 13px; }
-    .summary-card strong { display: block; margin-top: 10px; font-size: 19px; }
-    .summary-card span { color: var(--muted); font-size: 14px; }
-    .icon {
-      display: grid;
-      place-items: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      color: #fff;
-      background: var(--red);
-      font-size: 19px;
-    }
-
-    .route-strip {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
+    .overview-day {
       overflow: hidden;
-      border: 1px solid var(--line);
       border-radius: 16px;
-      background: #efe4d2;
     }
-    .route-stop {
+    .overview-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 19px 21px;
+      color: white;
+      background: var(--red);
+    }
+    .overview-day:nth-child(2) .overview-top { background: var(--green); }
+    .overview-day:nth-child(3) .overview-top { background: #9a6c27; }
+    .overview-date {
+      font: 700 35px/1 "STKaiti", "KaiTi", serif;
+    }
+    .overview-start { text-align: right; font-size: 13px; opacity: .82; }
+    .overview-start strong { display: block; color: white; font-size: 17px; opacity: 1; }
+    .overview-body { padding: 21px; }
+    .overview-body h3 { margin-bottom: 13px; }
+    .overview-route { margin: 0; padding: 0; list-style: none; }
+    .overview-route li {
       position: relative;
-      min-height: 160px;
-      padding: 25px;
-      border-right: 1px solid rgba(71, 50, 32, .13);
+      padding: 7px 0 7px 21px;
+      border-left: 1px solid var(--line);
+      color: #554c43;
+      font-size: 14px;
     }
-    .route-stop:last-child { border-right: 0; }
-    .route-stop::before {
+    .overview-route li::before {
       content: "";
       position: absolute;
-      top: 31px;
-      right: -7px;
-      z-index: 2;
-      width: 13px;
-      height: 13px;
+      left: -5px;
+      top: 15px;
+      width: 9px;
+      height: 9px;
       border-radius: 50%;
-      background: var(--red);
-      box-shadow: 0 0 0 5px #efe4d2;
+      background: var(--gold);
     }
-    .route-stop:last-child::before { display: none; }
-    .route-stop b { color: var(--red); font-size: 13px; letter-spacing: .08em; }
-    .route-stop strong { display: block; margin: 10px 0 4px; font-size: 19px; }
-    .route-stop span { color: var(--muted); font-size: 14px; }
+    .overview-route li:first-child { padding-top: 0; }
+    .overview-route li:first-child::before { top: 7px; }
+    .overview-route li:last-child { padding-bottom: 0; }
+    .overview-tip {
+      margin: 18px 0 0;
+      padding-top: 13px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .departure-note {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      margin-top: 16px;
+      padding: 16px 20px;
+      border: 1px solid rgba(153,31,47,.16);
+      border-radius: 12px;
+      background: rgba(153,31,47,.055);
+      font-size: 14px;
+    }
+    .departure-note strong { color: var(--red); }
 
     .day-card {
       display: grid;
@@ -322,9 +339,7 @@
       .hero-inner { grid-template-columns: 1fr; padding-top: 55px; }
       .hero-art { min-height: 250px; }
       .mountain { height: 280px; top: 20px; }
-      .summary-grid, .route-strip { grid-template-columns: repeat(2, 1fr); }
-      .route-stop:nth-child(2) { border-right: 0; }
-      .route-stop::before { display: none; }
+      .overview-grid { grid-template-columns: 1fr; }
       .museum-grid, .food-grid, .prep-grid { grid-template-columns: 1fr 1fr; }
       .weather-panel { grid-template-columns: 1fr; }
     }
@@ -333,8 +348,8 @@
       .hero { min-height: 680px; }
       .hero-inner { gap: 0; padding-bottom: 70px; }
       .stamp { width: 82px; height: 82px; font-size: 19px; }
-      .summary-grid, .route-strip, .museum-grid, .food-grid, .prep-grid, .weather-list { grid-template-columns: 1fr; }
-      .route-stop { border-right: 0; border-bottom: 1px solid var(--line); }
+      .overview-grid, .museum-grid, .food-grid, .prep-grid, .weather-list { grid-template-columns: 1fr; }
+      .departure-note { flex-direction: column; gap: 4px; }
       .day-card { grid-template-columns: 1fr; }
       .day-label { min-height: 160px; }
       .event { grid-template-columns: 70px 1fr; }
@@ -348,7 +363,7 @@
       .hero-art { display: none; }
       main { padding: 30px 0; }
       section { break-inside: avoid; margin-bottom: 38px; }
-      .day-card, .summary-card, .museum-card, .food-card, .check-card { box-shadow: none; }
+      .day-card, .overview-day, .museum-card, .food-card, .check-card { box-shadow: none; }
     }
   </style>
 </head>
@@ -358,12 +373,12 @@
       <div>
         <div class="eyebrow">CHANGSHA · DRAGON BOAT HOLIDAY · 2026</div>
         <h1>长沙<br>慢慢游</h1>
-        <p class="hero-copy">一日一个片区，不赶场、不跨城。用三天认识长沙的市井烟火、岳麓文脉与湘江艺术。</p>
+        <p class="hero-copy">一日一个片区，用三天认识长沙的市井烟火、岳麓文脉与湘江艺术。</p>
         <div class="hero-meta">
-          <span class="pill">6 月 18 日 13:00 抵达</span>
-          <span class="pill">6 月 21 日 09:00 离开</span>
-          <span class="pill">3 晚 · 休闲游</span>
-          <span class="pill">建议住五一广场外围</span>
+          <span class="pill">6 月 18 日 10:00 深圳北</span>
+          <span class="pill">6 月 21 日 09:30 长沙南</span>
+          <span class="pill">美奥高空江景民宿 碧沙湖站</span>
+          <span class="pill">3晚 · 休闲游</span>
         </div>
       </div>
       <div class="hero-art" aria-hidden="true">
@@ -395,23 +410,53 @@
   <main class="shell">
     <section id="overview">
       <div class="section-head">
-        <div><div class="kicker">TRIP AT A GLANCE</div><h2>轻松，但不空洞</h2></div>
-        <p class="subtle">每天只进入一个核心片区，午后留出休息时间。抵离时间较紧的首尾两天不安排远距离景点。</p>
+        <div><div class="kicker">TRIP AT A GLANCE</div><h2>三日游览重点</h2></div>
+        <p class="subtle">出发时间、交通方式、核心景点</p>
       </div>
-      <div class="summary-grid">
-        <article class="summary-card"><div class="icon">区</div><strong>每日一个片区</strong><span>减少跨城交通与排队消耗</span></article>
-        <article class="summary-card"><div class="icon">食</div><strong>少量多餐</strong><span>小吃分食，正餐主动要求少辣</span></article>
-        <article class="summary-card"><div class="icon">艺</div><strong>两馆为上限</strong><span>艺术日保留咖啡与散步时间</span></article>
-        <article class="summary-card"><div class="icon">雨</div><strong>雨热兼顾</strong><span>上午户外，午后室内与休息</span></article>
+      <div class="overview-grid">
+        <article class="overview-day">
+          <div class="overview-top"><span class="overview-date">06.18</span><span class="overview-start">先入住，公交<br><strong>16:00 出发</strong></span></div>
+          <div class="overview-body">
+            <h3>五一广场片区 · 城市烟火</h3>
+            <ol class="overview-route">
+              <li>公交漫游，走马长沙街景</li>
+              <li>黄兴路步行街与 IFS 国金中心</li>
+              <li>坡子街少量多餐，品尝长沙小吃</li>
+              <li>太平街漫步，解放西路感受夜生活</li>
+            </ol>
+            <p class="overview-tip">首日重点：城市漫游初印象</p>
+          </div>
+        </article>
+        <article class="overview-day">
+          <div class="overview-top"><span class="overview-date">06.19</span><span class="overview-start">地铁<br><strong>09:00 出发</strong></span></div>
+          <div class="overview-body">
+            <h3>岳麓山片区 · 山林文脉</h3>
+            <ol class="overview-route">
+              <li>地铁前往岳麓山南门，预约进山</li>
+              <li>岳麓书院，了解千年书院传统</li>
+              <li>湖大，湖师大重返校园生活</li>
+              <li>14:00 午休后前往长沙雨花非遗馆</li>
+            </ol>
+            <p class="overview-tip">当日重点：文化探索之旅，注意避开人流和气温高峰</p>
+          </div>
+        </article>
+        <article class="overview-day">
+          <div class="overview-top"><span class="overview-date">06.20</span><span class="overview-start">打车<br><strong>10:00 出发</strong></span></div>
+          <div class="overview-body">
+            <h3>洋湖艺术片区 · 看展漫游</h3>
+            <ol class="overview-route">
+              <li>湖南美术馆，选择感兴趣的展览</li>
+              <li>后湖艺术区午餐、咖啡与散步</li>
+              <li>李自健美术馆，观看油画与建筑</li>
+              <li>谢子龙影像艺术馆，关注摄影展览</li>
+            </ol>
+            <p class="overview-tip">当日重点：四处均可弹性取舍，不要过劳</p>
+          </div>
+        </article>
       </div>
-    </section>
-
-    <section>
-      <div class="route-strip" aria-label="行程路线">
-        <div class="route-stop"><b>06.18 · THU</b><strong>五一广场片区</strong><span>IFS、小吃、公交街景</span></div>
-        <div class="route-stop"><b>06.19 · FRI</b><strong>岳麓山片区</strong><span>山林、书院、非遗体验</span></div>
-        <div class="route-stop"><b>06.20 · SAT</b><strong>洋湖艺术片区</strong><span>美术馆、影像、湖边休息</span></div>
-        <div class="route-stop"><b>06.21 · SUN</b><strong>09:00 离开</strong><span>不安排景点，提前出发</span></div>
+      <div class="departure-note">
+        <span><strong>06.21 · 09:30 离开长沙</strong></span>
+        <span>不安排景点，前一晚完成整理，至少提前50min出发。</span>
       </div>
     </section>
 
@@ -424,59 +469,61 @@
       <article class="day-card">
         <div class="day-label"><small>抵达与烟火气</small><strong>18</strong><span>周四 · 13:00 抵达</span></div>
         <div class="day-content">
-          <span class="area">唯一片区：五一广场—黄兴路—坡子街</span>
+          <span class="area">核心路线：五一广场—黄兴路—坡子街—太平街—解放西路</span>
           <h3>从长沙的市井与夜色开始</h3>
           <div class="timeline">
-            <div class="event"><time>13:00</time><p>抵达长沙，前往酒店寄存行李或办理入住。<em>建议为出站、交通与入住预留 60—90 分钟。</em></p></div>
-            <div class="event"><time>15:00</time><p>从五一广场缓慢进入 IFS 国金中心。<em>看城市天际线、商场公共艺术；热门打卡位排队过长可直接放弃。</em></p></div>
-            <div class="event"><time>17:00</time><p>黄兴路与坡子街少量多餐。<em>臭豆腐、糖油粑粑、米粉选 2—3 样分食，不用一次吃齐。</em></p></div>
-            <div class="event"><time>19:00</time><p>坐一段公交看街景，再回五一广场片区散步。<em>在地图中选择 30—45 分钟、少换乘且终点方便回酒店的线路；公交线路以当天实时信息为准。</em></p></div>
-            <div class="event"><time>21:00</time><p>回酒店休息。<em>首日不追加橘子洲或杜甫江阁，给后续两天留体力。</em></p></div>
+            <div class="event"><time>13:00</time><p>抵达长沙，前往酒店。<em>建议为出站、交通与入住预留 60—90 分钟。</em></p></div>
+            <div class="event"><time>16:00</time><p>稍事休息，公交前往黄兴路步行街。<em>搭乘901路公交至 柑子园西 站，约30分钟，沿途观看城市街景。</em></p></div>
+            <div class="event"><time>17:00</time><p>游览黄兴路步行街与 IFS 国金中心。<em>看商圈街景与公共艺术，热门打卡位可能排队，楼顶夕阳出片。</em></p></div>
+            <div class="event"><time>18:30</time><p>前往坡子街。<em>少量多餐！臭豆腐、糖油粑粑等选 2—3 样分食，不用一次吃齐。</em></p></div>
+            <div class="event"><time>20:00</time><p>步行经过太平街与解放西路。<em>以看街景，轻松散步，感受夜生活为主</em></p></div>
+            <div class="event"><time>21:30</time><p>回酒店休息。<em> </em></p></div>
           </div>
-          <div class="note">住宿建议：不要住最嘈杂的步行街正中心，优先选五一广场相邻一站地铁、步行可达但夜间相对安静的位置。</div>
+          <div class="note">其他事项：无。</div>
         </div>
       </article>
 
       <article class="day-card">
         <div class="day-label green"><small>山林与湖湘文脉</small><strong>19</strong><span>周五 · 端午节</span></div>
         <div class="day-content">
-          <span class="area">唯一片区：岳麓山—岳麓书院—湖南大学</span>
-          <h3>不追求登顶，重点感受山林与书院</h3>
+          <span class="area">核心路线：岳麓山南门—岳麓书院—爱晚亭；下午前往雨花非遗馆</span>
+          <h3>不求登顶，重点感受山林与书院</h3>
           <div class="timeline">
-            <div class="event"><time>08:00</time><p>早餐后前往岳麓山南门。<em>端午客流大，尽量早到；带水、防滑鞋和驱蚊用品。</em></p></div>
-            <div class="event"><time>09:00</time><p>岳麓书院与爱晚亭慢游。<em>岳麓书院始建于北宋开宝九年，是中国书院传统的重要代表。</em></p></div>
-            <div class="event"><time>11:30</time><p>湖南大学周边午餐，随后午休。<em>天气闷热时不登顶，不把“爬完岳麓山”当作任务。</em></p></div>
-            <div class="event"><time>14:30</time><p>预约一场非遗手作体验。<em>优先选择湘绣、棕编、剪纸、长沙窑陶艺或传统香囊；地点尽量选大学城/河西片区。</em></p></div>
-            <div class="event"><time>17:30</time><p>在大学城吃饭，之后直接回酒店。<em>如遇大雨，将全天重心改为书院、非遗体验和茶馆。</em></p></div>
+            <div class="event"><time>09:00</time><p>地铁前往岳麓山南门。<em>端午客流大，带水、遮阳伞/帽和驱蚊用品。</em></p></div>
+            <div class="event"><time>10:00</time><p>岳麓书院与爱晚亭慢游。<em>岳麓书院始建于北宋开宝九年，是中国书院传统的重要代表。</em></p></div>
+            <div class="event"><time>12:00</time><p>湖南师范大学食堂午餐。<em>兰桂苑食堂满受学生赞誉，量多味美。不建议去湖南大学食堂。</em></p></div>
+            <div class="event"><time>14:00</time><p>前往长沙雨花非遗馆。<em>岳麓山与雨花区相距较远，建议预留约 45—60 分钟交通时间，并提前确认端午开放安排。</em></p></div>
+            <div class="event"><time>15:00</time><p>参观雨花非遗馆并体验湖湘非遗文化。<em>无预约，可付费体验，套餐价90元/4项目。重点关注湘绣、棕编、剪纸、传统戏曲。</em></p></div>
+            <div class="event"><time>17:30</time><p>晚餐，回酒店休息。<em> </em></p></div>
           </div>
-          <div class="note">预约策略：非遗体验通常需要提前联系具体工作室。确认开课时间、耗时、是否可带走作品，以及端午节是否营业。</div>
+          <div class="note">其他事项：岳麓山提前预约！如遇下雨，缩短徒步路线，保留书院与非遗馆。</div>
         </div>
       </article>
 
       <article class="day-card">
         <div class="day-label gold"><small>艺术与湘江南岸</small><strong>20</strong><span>周六 · 室内为主</span></div>
         <div class="day-content">
-          <span class="area">唯一片区：靳江—洋湖艺术片区</span>
-          <h3>主看两馆，第三馆只做替换</h3>
+          <span class="area">核心路线：湖南美术馆—后湖艺术区—李自健美术馆—谢子龙影像艺术馆</span>
+          <h3>用一整天慢慢看展，按体力弹性取舍</h3>
           <div class="timeline">
-            <div class="event"><time>09:30</time><p>湖南美术馆。<em>先看近期展览信息，挑感兴趣的展厅，不要求完整走完。</em></p></div>
-            <div class="event"><time>12:00</time><p>片区内午餐与咖啡休息。<em>至少留出 90 分钟恢复注意力。</em></p></div>
-            <div class="event"><time>14:00</time><p>李自健美术馆。<em>以油画常设展、建筑空间和湖边休息为主；常规信息为周一闭馆、10:00—17:30 开放，临行仍需复核。</em></p></div>
-            <div class="event"><time>16:30</time><p>视体力决定：洋湖湿地短走，或将第二馆替换为谢子龙影像艺术馆。<em>不要在一天内硬看三馆。</em></p></div>
-            <div class="event"><time>19:00</time><p>最后一顿湘菜，早回酒店整理行李。<em>次日 09:00 离开，建议今晚确认交通与叫车时间。</em></p></div>
+            <div class="event"><time>10:00</time><p>打车前往湖南美术馆。<em>先看近期展览信息，挑感兴趣的展厅，不要求完整走完。</em></p></div>
+            <div class="event"><time>12:00</time><p>前往后湖艺术区。<em>午餐、喝咖啡和休息。至少留出 90 分钟。</em></p></div>
+            <div class="event"><time>14:30</time><p>前往李自健美术馆。<em>以油画常设展、建筑空间和湖边休息为主。</em></p></div>
+            <div class="event"><time>16:30</time><p>步行前往相邻的谢子龙影像艺术馆。<em>以摄影、历史影像和当代视觉艺术为主；根据体力与当期展览决定停留时长。</em></p></div>
+            <div class="event"><time>18:00</time><p>晚餐，回酒店休息。<em> </em></p></div>
           </div>
-          <div class="note">三馆都位于湘江西岸南部，仍建议使用网约车完成馆际移动。展览、预约和开放时间可能临时调整，以各馆官方渠道为准。</div>
+          <div class="note">其他事项：各美术馆核实开放时间，提前预约！</div>
         </div>
       </article>
 
       <article class="day-card">
-        <div class="day-label dark"><small>从容离开</small><strong>21</strong><span>周日 · 09:00 离开</span></div>
+        <div class="day-label dark"><small>从容离开</small><strong>21</strong><span>周日 · 09:30 长沙南</span></div>
         <div class="day-content">
           <span class="area">不安排景点</span>
-          <h3>早起、退房、前往车站或机场</h3>
+          <h3>早起、退房、前往车站</h3>
           <div class="timeline">
-            <div class="event"><time>建议</time><p>前一晚完成行李整理，并向酒店确认早餐与退房方式。</p></div>
-            <div class="event"><time>预留</time><p>长沙南站建议至少提前 60 分钟抵达；机场建议至少提前 2 小时抵达。<em>具体出发时间按住宿地点、交通方式与票面要求倒推。</em></p></div>
+            <div class="event"><time>建议</time><p>前一晚完成行李整理。</p></div>
+            <div class="event"><time>预留</time><p>长沙南站 至少提前 50 分钟，在8：30出发。</p></div>
           </div>
         </div>
       </article>
@@ -485,23 +532,23 @@
     <section id="art">
       <div class="section-head">
         <div><div class="kicker">ART DAY</div><h2>美术馆怎么选</h2></div>
-        <p class="subtle">20 日建议选择湖南美术馆 + 李自健美术馆。谢子龙影像艺术馆作为摄影兴趣或临时展览更合适时的替换项。</p>
+        <p class="subtle">20 日按湖南美术馆、后湖艺术区、李自健美术馆、谢子龙影像艺术馆依次游览；三个展馆根据体力和当期展览弹性取舍。</p>
       </div>
       <div class="museum-grid">
         <article class="museum-card primary">
-          <span class="tag">上午主选</span><h3>湖南美术馆</h3>
+          <span class="tag">上午首站</span><h3>湖南美术馆</h3>
           <p>湖南规模较大的专业公共美术馆，适合通过专题展认识湖湘美术与当代艺术。</p>
           <ul><li>地址：岳麓区靳江路 2 号</li><li>先查近期展览与预约要求</li><li>建议停留：1.5—2 小时</li></ul>
           <a href="http://www.hnmsg.net/" target="_blank" rel="noopener">查看官方信息</a>
         </article>
         <article class="museum-card primary">
-          <span class="tag">下午主选</span><h3>李自健美术馆</h3>
+          <span class="tag">下午主站</span><h3>李自健美术馆</h3>
           <p>位于洋湖湿地片区，包含李自健油画常设展、书法空间、书店与临水建筑空间。</p>
           <ul><li>地址：潇湘南路一段 385 号</li><li>常规为周一闭馆</li><li>建议停留：2—2.5 小时</li></ul>
           <a href="http://www.lizijianmsg.com/" target="_blank" rel="noopener">查看官方信息</a>
         </article>
         <article class="museum-card alt">
-          <span class="tag">替换选项</span><h3>谢子龙影像艺术馆</h3>
+          <span class="tag">傍晚弹性站</span><h3>谢子龙影像艺术馆</h3>
           <p>与李自健美术馆相邻，以摄影、历史影像和当代视觉艺术为主，建筑本身也很适合观看。</p>
           <ul><li>地址：潇湘南路一段 387 号</li><li>更适合摄影与建筑爱好者</li><li>建议停留：1.5—2 小时</li></ul>
           <a href="https://www.x-museum.com/" target="_blank" rel="noopener">查看官方信息</a>
