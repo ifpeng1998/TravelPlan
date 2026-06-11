@@ -282,10 +282,40 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
     }
-    .museum-card, .food-card, .check-card { padding: 24px; border-radius: 14px; }
+    .museum-grid { grid-template-columns: repeat(2, 1fr); }
+    .museum-card, .food-card, .check-card { border-radius: 14px; }
+    .museum-card, .food-card { overflow: hidden; }
+    .check-card { padding: 24px; }
     .museum-card.primary { border-top: 4px solid var(--red); }
     .museum-card.alt { border-top: 4px solid var(--gold); }
-    .museum-card h3, .food-card h3 { margin-top: 12px; }
+    .museum-card h3, .food-card h3 { margin: 10px 0 6px; }
+    .card-media {
+      position: relative;
+      height: 210px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #ded0bc, #9d8571);
+    }
+    .card-media img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform .35s ease;
+    }
+    .museum-card:hover .card-media img, .food-card:hover .card-media img { transform: scale(1.035); }
+    .card-media figcaption {
+      position: absolute;
+      right: 8px;
+      bottom: 7px;
+      max-width: calc(100% - 16px);
+      padding: 3px 7px;
+      border-radius: 4px;
+      color: white;
+      background: rgba(33, 25, 20, .7);
+      font-size: 10px;
+    }
+    .card-media figcaption a { color: white; text-underline-offset: 2px; }
+    .card-body { padding: 21px 22px 23px; }
     .tag {
       display: inline-block;
       padding: 4px 8px;
@@ -298,8 +328,32 @@
     .museum-card p, .food-card p, .check-card p { color: var(--muted); font-size: 14px; }
     .museum-card ul, .check-card ul { margin: 12px 0 0; padding-left: 18px; font-size: 14px; }
     .museum-card a { font-size: 13px; }
-    .food-card { min-height: 190px; }
-    .food-card .big { font: 700 42px/1 "STKaiti", "KaiTi", serif; color: var(--red); }
+    .museum-facts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin: 14px 0;
+    }
+    .museum-facts div {
+      padding: 10px;
+      border-radius: 7px;
+      background: #f5eddf;
+      color: #5f5145;
+      font-size: 12px;
+    }
+    .museum-facts strong { display: block; margin-bottom: 2px; color: var(--red-dark); font-size: 13px; }
+    .food-card { min-height: 330px; }
+    .food-card .card-media { height: 165px; }
+    .food-card .card-body { padding: 17px 19px 20px; }
+    .food-card .shop {
+      display: block;
+      margin-top: 9px;
+      padding-top: 9px;
+      border-top: 1px solid var(--line);
+      color: var(--red);
+      font-size: 13px;
+      font-weight: 700;
+    }
 
     .weather-panel {
       display: grid;
@@ -349,6 +403,7 @@
       .hero-inner { gap: 0; padding-bottom: 70px; }
       .stamp { width: 82px; height: 82px; font-size: 19px; }
       .overview-grid, .museum-grid, .food-grid, .prep-grid, .weather-list { grid-template-columns: 1fr; }
+      .card-media { height: 190px; }
       .departure-note { flex-direction: column; gap: 4px; }
       .day-card { grid-template-columns: 1fr; }
       .day-label { min-height: 160px; }
@@ -400,9 +455,9 @@
     <div class="shell nav-inner">
       <a href="#overview">行程总览</a>
       <a href="#days">每日规划</a>
-      <a href="#art">美术馆选择</a>
-      <a href="#food">吃什么</a>
-      <a href="#weather">天气策略</a>
+      <a href="#art">美术馆介绍</a>
+      <a href="#food">湘菜小吃</a>
+      <a href="#weather">天气</a>
       <a href="#prep">出发清单</a>
     </div>
   </nav>
@@ -532,26 +587,60 @@
     <section id="art">
       <div class="section-head">
         <div><div class="kicker">ART DAY</div><h2>美术馆怎么选</h2></div>
-        <p class="subtle">20 日按湖南美术馆、后湖艺术区、李自健美术馆、谢子龙影像艺术馆依次游览；三个展馆根据体力和当期展览弹性取舍。</p>
+        <p class="subtle">20 日按湖南美术馆、后湖国际艺术区、李自健美术馆、谢子龙影像艺术馆依次游览。开放时间和票价可能随展览调整，临行前以官方公告为准。</p>
       </div>
       <div class="museum-grid">
         <article class="museum-card primary">
-          <span class="tag">上午首站</span><h3>湖南美术馆</h3>
-          <p>湖南规模较大的专业公共美术馆，适合通过专题展认识湖湘美术与当代艺术。</p>
-          <ul><li>地址：岳麓区靳江路 2 号</li><li>先查近期展览与预约要求</li><li>建议停留：1.5—2 小时</li></ul>
-          <a href="http://www.hnmsg.net/" target="_blank" rel="noopener">查看官方信息</a>
-        </article>
-        <article class="museum-card primary">
-          <span class="tag">下午主站</span><h3>李自健美术馆</h3>
-          <p>位于洋湖湿地片区，包含李自健油画常设展、书法空间、书店与临水建筑空间。</p>
-          <ul><li>地址：潇湘南路一段 385 号</li><li>常规为周一闭馆</li><li>建议停留：2—2.5 小时</li></ul>
-          <a href="http://www.lizijianmsg.com/" target="_blank" rel="noopener">查看官方信息</a>
+          <figure class="card-media">
+            <img src="https://tse1.mm.bing.net/th?q=%E6%B9%96%E5%8D%97%E7%BE%8E%E6%9C%AF%E9%A6%86%E5%A4%96%E8%A7%82&w=1000&h=650&c=7&rs=1&p=0" alt="湖南美术馆外观" loading="lazy">
+            <figcaption><a href="https://bbs.zhulong.com/101010_group_201808/detail42204060/" target="_blank" rel="noopener">外观图来源</a></figcaption>
+          </figure>
+          <div class="card-body">
+            <span class="tag">上午首站</span><h3>湖南美术馆</h3>
+            <p>湖南专业公共美术馆，红白几何建筑辨识度高，适合通过专题展认识湖湘美术与当代艺术。</p>
+            <div class="museum-facts"><div><strong>开放时间</strong>周二至周日<br>09:00—17:00</div><div><strong>票价</strong>免费<br>通常需预约</div></div>
+            <ul><li>地址：岳麓区靳江路 2 号</li><li>建议停留：1.5—2 小时</li></ul>
+            <a href="https://www.hnmsg.net/" target="_blank" rel="noopener">查看官方信息</a>
+          </div>
         </article>
         <article class="museum-card alt">
-          <span class="tag">傍晚弹性站</span><h3>谢子龙影像艺术馆</h3>
-          <p>与李自健美术馆相邻，以摄影、历史影像和当代视觉艺术为主，建筑本身也很适合观看。</p>
-          <ul><li>地址：潇湘南路一段 387 号</li><li>更适合摄影与建筑爱好者</li><li>建议停留：1.5—2 小时</li></ul>
-          <a href="https://www.x-museum.com/" target="_blank" rel="noopener">查看官方信息</a>
+          <figure class="card-media">
+            <img src="https://k.sinaimg.cn/n/sinakd10104/441/w1776h1065/20200806/686a-ixkvvuc3805789.jpg/w700d1q75cms.jpg" alt="后湖国际艺术区湖畔建筑" loading="lazy">
+            <figcaption><a href="https://k.sina.cn/article_7036135198_p1a362e71e00100tgna.html" target="_blank" rel="noopener">图片：新浪文章</a></figcaption>
+          </figure>
+          <div class="card-body">
+            <span class="tag">午间漫游</span><h3>后湖国际艺术区</h3>
+            <p>环湖分布着艺术工作室、画廊、设计空间、咖啡馆与公共艺术，适合午餐后慢走和休息。</p>
+            <div class="museum-facts"><div><strong>开放时间</strong>公共区域全天<br>店铺各自营业</div><div><strong>票价</strong>公共区域免费<br>活动另计</div></div>
+            <ul><li>地址：岳麓区后湖路周边</li><li>建议停留：1.5—2 小时</li></ul>
+            <a href="https://www.icswb.com/h/100048/20190902/618881.html" target="_blank" rel="noopener">了解后湖艺术区</a>
+          </div>
+        </article>
+        <article class="museum-card primary">
+          <figure class="card-media">
+            <img src="https://tse1.mm.bing.net/th?q=%E6%9D%8E%E8%87%AA%E5%81%A5%E7%BE%8E%E6%9C%AF%E9%A6%86%E5%A4%96%E8%A7%82&w=1000&h=650&c=7&rs=1&p=0" alt="李自健美术馆外观" loading="lazy">
+            <figcaption><a href="https://www.chinathj.cn/indoor-case/61.html" target="_blank" rel="noopener">外观图来源</a></figcaption>
+          </figure>
+          <div class="card-body">
+            <span class="tag">下午主站</span><h3>李自健美术馆</h3>
+            <p>位于洋湖湿地片区，包含李自健油画常设展、书法空间、书店与临水建筑空间。</p>
+            <div class="museum-facts"><div><strong>开放时间</strong>周二至周日<br>10:00—17:30</div><div><strong>票价</strong>免费开放<br>特展以公告为准</div></div>
+            <ul><li>地址：潇湘南路一段 385 号</li><li>建议停留：2—2.5 小时</li></ul>
+            <a href="http://www.lizijianmsg.com/" target="_blank" rel="noopener">查看官方信息</a>
+          </div>
+        </article>
+        <article class="museum-card alt">
+          <figure class="card-media">
+            <img src="https://tse1.mm.bing.net/th?q=%E8%B0%A2%E5%AD%90%E9%BE%99%E5%BD%B1%E5%83%8F%E8%89%BA%E6%9C%AF%E9%A6%86%E5%A4%96%E8%A7%82&w=1000&h=650&c=7&rs=1&p=0" alt="谢子龙影像艺术馆外观" loading="lazy">
+            <figcaption><a href="https://www.archiposition.com/items/20180525113540" target="_blank" rel="noopener">外观图来源</a></figcaption>
+          </figure>
+          <div class="card-body">
+            <span class="tag">傍晚弹性站</span><h3>谢子龙影像艺术馆</h3>
+            <p>与李自健美术馆相邻，以摄影、历史影像和当代视觉艺术为主，白色清水混凝土建筑也值得观看。</p>
+            <div class="museum-facts"><div><strong>开放时间</strong>常规周二至周日<br>10:00—18:00</div><div><strong>票价</strong>公共区域免费<br>展览票价不一</div></div>
+            <ul><li>地址：潇湘南路一段 387 号</li><li>建议停留：1.5—2 小时</li></ul>
+            <a href="https://www.x-museum.com/" target="_blank" rel="noopener">查看官方信息</a>
+          </div>
         </article>
       </div>
     </section>
@@ -559,12 +648,18 @@
     <section id="food">
       <div class="section-head">
         <div><div class="kicker">EAT SMART</div><h2>长沙味道，慢慢吃</h2></div>
-        <p class="subtle">三天不需要追完所有网红店。核心原则是少量多餐、避开长队、连续重辣之间穿插清淡早餐。</p>
+        <p class="subtle">九种经典长沙味道，按路线就近选择即可。推荐店铺用于快速筛选，不必为了单一家店跨片区排长队。</p>
       </div>
       <div class="food-grid">
-        <article class="food-card"><div class="big">粉</div><h3>早餐</h3><p>长沙米粉、肉丝粉或原汤粉。适合作为每天稳定、清淡一点的开始。</p></article>
-        <article class="food-card"><div class="big">小</div><h3>街头小吃</h3><p>臭豆腐、糖油粑粑、葱油粑粑。两人分食，排队超过 20 分钟就换一家。</p></article>
-        <article class="food-card"><div class="big">湘</div><h3>正餐</h3><p>辣椒炒肉、小炒黄牛肉、剁椒鱼头。点菜时主动询问辣度，避免每道都重辣。</p></article>
+        <article class="food-card"><figure class="card-media"><img src="https://upload.wikimedia.org/wikipedia/commons/3/36/Changsha-style_Stinky_Tofu_at_Huogongdian_%2820180222183104%29.jpg" alt="长沙臭豆腐" loading="lazy"><figcaption>图：Wikimedia Commons</figcaption></figure><div class="card-body"><h3>长沙臭豆腐</h3><p>外壳酥脆、内部多孔，灌入辣椒蒜汁后香辣多汁。</p><span class="shop">推荐：黑色经典、文和友老长沙臭豆腐</span></div></article>
+        <article class="food-card"><figure class="card-media"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/%E7%B3%96%E6%B2%B9%E7%B2%91%E7%B2%91.jpg" alt="糖油粑粑" loading="lazy"><figcaption>图：Wikimedia Commons</figcaption></figure><div class="card-body"><h3>糖油粑粑</h3><p>糯米粑粑裹上糖油，外焦内糯，适合趁热两人分食。</p><span class="shop">推荐：李公庙糖油粑粑、南门口摊档</span></div></article>
+        <article class="food-card"><figure class="card-media"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Changsha_rice_noodles_%2820160324062840%29.jpg" alt="长沙米粉" loading="lazy"><figcaption>图：Wikimedia Commons</figcaption></figure><div class="card-body"><h3>长沙米粉</h3><p>扁粉配原汤和码子，是长沙人日常早餐，口味可清淡可加辣。</p><span class="shop">推荐：公交新村粉店、肆姐面粉馆</span></div></article>
+        <article class="food-card"><figure class="card-media"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Spicy_crayfish.jpg" alt="口味虾" loading="lazy"><figcaption>口味虾示意图：Wikimedia Commons</figcaption></figure><div class="card-body"><h3>口味虾</h3><p>小龙虾用辣椒、紫苏等重味烹煮，是长沙夜宵代表。</p><span class="shop">推荐：天宝兄弟、文和友</span></div></article>
+        <article class="food-card"><figure class="card-media"><img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Hunan_cuisine%2C_fried_pork_with_pepper.jpg" alt="辣椒炒肉" loading="lazy"><figcaption>图：Wikimedia Commons</figcaption></figure><div class="card-body"><h3>辣椒炒肉</h3><p>青椒香气与猪肉油脂融合，极具代表性的湖南家常下饭菜。</p><span class="shop">推荐：费大厨辣椒炒肉、光脑壳家常菜馆</span></div></article>
+        <article class="food-card"><figure class="card-media"><img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Hunan_cuisine%2C_steamed_fish_head_in_chili_sauce.jpg" alt="剁椒鱼头" loading="lazy"><figcaption>图：Wikimedia Commons</figcaption></figure><div class="card-body"><h3>剁椒鱼头</h3><p>鱼头铺满发酵剁椒蒸制，鲜、咸、辣兼具，适合多人分享。</p><span class="shop">推荐：坛宗剁椒鱼头、玉楼东</span></div></article>
+        <article class="food-card"><figure class="card-media"><img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Shaoyang-style_beef_rice_noodles_at_Chengtuotuo_Restaurant%2C_Qingnianlu_%2820230612113647%29.jpg" alt="小炒黄牛肉" loading="lazy"><figcaption>黄牛肉示意图：Wikimedia Commons</figcaption></figure><div class="card-body"><h3>小炒黄牛肉</h3><p>黄牛肉快速爆炒，搭配辣椒与香菜，口感鲜嫩、香辣直接。</p><span class="shop">推荐：炊烟小炒黄牛肉、笨萝卜</span></div></article>
+        <article class="food-card"><figure class="card-media"><img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Scallion_pancakes.jpg" alt="葱油粑粑" loading="lazy"><figcaption>葱油饼示意图：Wikimedia Commons</figcaption></figure><div class="card-body"><h3>葱油粑粑</h3><p>米浆与葱花油炸成饼，外缘焦脆，是街头常见的咸香小吃。</p><span class="shop">推荐：四方坪夜市、南门口摊档</span></div></article>
+        <article class="food-card"><figure class="card-media"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/CHANGSHAXIAOCHI.jpg" alt="长沙小吃" loading="lazy"><figcaption>长沙小吃图：Wikimedia Commons</figcaption></figure><div class="card-body"><h3>紫苏桃子姜</h3><p>脆桃、生姜与紫苏腌制，酸甜清爽，适合在连续重辣餐之间解腻。</p><span class="shop">推荐：东瓜山夜市、南门口摊档</span></div></article>
       </div>
     </section>
 
