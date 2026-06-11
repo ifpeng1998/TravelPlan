@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#991f2f">
+  <title>长沙端午休闲游｜2026.06.18—06.21</title>
+  <style>
+    :root {
+      --ink: #292520;
+      --muted: #756d64;
+      --paper: #f7f1e6;
+      --card: rgba(255, 253, 248, .92);
+      --red: #991f2f;
+      --red-dark: #681421;
+      --gold: #c69643;
+      --green: #446b59;
+      --line: rgba(62, 48, 34, .14);
+      --shadow: 0 18px 50px rgba(62, 34, 21, .12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Microsoft YaHei", "PingFang SC", system-ui, sans-serif;
+      line-height: 1.7;
+      background:
+        radial-gradient(circle at 8% 4%, rgba(198, 150, 67, .17), transparent 25rem),
+        radial-gradient(circle at 94% 13%, rgba(153, 31, 47, .12), transparent 28rem),
+        var(--paper);
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      opacity: .26;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90' viewBox='0 0 90 90'%3E%3Cpath d='M0 45h90M45 0v90' stroke='%239b8065' stroke-opacity='.13'/%3E%3Ccircle cx='45' cy='45' r='2' fill='%239b8065' fill-opacity='.2'/%3E%3C/svg%3E");
+    }
+    a { color: var(--red); text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    button { font: inherit; }
+    .shell { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+
+    .hero {
+      min-height: 610px;
+      overflow: hidden;
+      position: relative;
+      color: #fff9ec;
+      background: linear-gradient(135deg, #51101d 0%, #991f2f 56%, #c7684c 100%);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 45%;
+      background: linear-gradient(to top, rgba(33, 8, 14, .55), transparent);
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      align-items: center;
+      gap: 48px;
+      padding: 80px 0 120px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 13px;
+      border: 1px solid rgba(255,255,255,.28);
+      border-radius: 99px;
+      background: rgba(255,255,255,.1);
+      font-size: 13px;
+      letter-spacing: .12em;
+    }
+    h1 {
+      margin: 24px 0 16px;
+      max-width: 700px;
+      font-family: "STKaiti", "KaiTi", serif;
+      font-size: clamp(52px, 8vw, 104px);
+      line-height: .98;
+      letter-spacing: -.04em;
+    }
+    .hero-copy { max-width: 640px; font-size: 18px; color: rgba(255,249,236,.82); }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+    .pill {
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.16);
+      font-size: 14px;
+    }
+    .hero-art { position: relative; min-height: 400px; }
+    .stamp {
+      position: absolute;
+      right: 4%;
+      top: 2%;
+      display: grid;
+      place-items: center;
+      width: 108px;
+      height: 108px;
+      border: 4px double rgba(255, 235, 199, .76);
+      color: rgba(255, 235, 199, .9);
+      font-family: "STKaiti", "KaiTi", serif;
+      font-size: 24px;
+      line-height: 1.15;
+      text-align: center;
+      transform: rotate(8deg);
+    }
+    .mountain {
+      position: absolute;
+      inset: 80px -70px 0 -20px;
+      width: calc(100% + 90px);
+      height: 360px;
+      opacity: .92;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--line);
+      background: rgba(247, 241, 230, .88);
+      backdrop-filter: blur(14px);
+    }
+    .nav-inner { display: flex; gap: 8px; overflow-x: auto; padding: 10px 0; }
+    nav a {
+      flex: 0 0 auto;
+      padding: 8px 12px;
+      border-radius: 7px;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 14px;
+    }
+    nav a:hover { background: rgba(153,31,47,.08); color: var(--red); }
+
+    main { padding: 62px 0 90px; }
+    section { scroll-margin-top: 80px; margin-bottom: 72px; }
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+    .kicker { color: var(--red); font-weight: 700; font-size: 13px; letter-spacing: .13em; }
+    h2 { margin: 4px 0 0; font: 700 clamp(30px, 5vw, 48px)/1.15 "STKaiti", "KaiTi", serif; }
+    h3 { margin: 0; font-size: 22px; }
+    .subtle { max-width: 620px; margin: 0; color: var(--muted); }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    .summary-card, .panel, .day-card, .museum-card, .food-card, .check-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+    .summary-card { padding: 22px; border-radius: 13px; }
+    .summary-card strong { display: block; margin-top: 10px; font-size: 19px; }
+    .summary-card span { color: var(--muted); font-size: 14px; }
+    .icon {
+      display: grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      color: #fff;
+      background: var(--red);
+      font-size: 19px;
+    }
+
+    .route-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #efe4d2;
+    }
+    .route-stop {
+      position: relative;
+      min-height: 160px;
+      padding: 25px;
+      border-right: 1px solid rgba(71, 50, 32, .13);
+    }
+    .route-stop:last-child { border-right: 0; }
+    .route-stop::before {
+      content: "";
+      position: absolute;
+      top: 31px;
+      right: -7px;
+      z-index: 2;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: var(--red);
+      box-shadow: 0 0 0 5px #efe4d2;
+    }
+    .route-stop:last-child::before { display: none; }
+    .route-stop b { color: var(--red); font-size: 13px; letter-spacing: .08em; }
+    .route-stop strong { display: block; margin: 10px 0 4px; font-size: 19px; }
+    .route-stop span { color: var(--muted); font-size: 14px; }
+
+    .day-card {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      overflow: hidden;
+      margin-bottom: 22px;
+      border-radius: 18px;
+    }
+    .day-label {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100%;
+      padding: 28px;
+      color: white;
+      background: var(--red);
+    }
+    .day-label.green { background: var(--green); }
+    .day-label.gold { background: #9a6c27; }
+    .day-label.dark { background: #3b3430; }
+    .day-label small { opacity: .72; letter-spacing: .15em; }
+    .day-label strong { font: 700 55px/1 "STKaiti", "KaiTi", serif; }
+    .day-label span { opacity: .8; }
+    .day-content { padding: 28px 32px 30px; }
+    .area {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 5px 10px;
+      border-radius: 6px;
+      color: var(--red);
+      background: rgba(153,31,47,.08);
+      font-weight: 700;
+      font-size: 13px;
+    }
+    .timeline { position: relative; margin-top: 22px; padding-left: 28px; }
+    .timeline::before { content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 1px; background: var(--line); }
+    .event { position: relative; display: grid; grid-template-columns: 86px 1fr; gap: 12px; padding: 0 0 18px; }
+    .event:last-child { padding-bottom: 0; }
+    .event::before { content: ""; position: absolute; left: -27px; top: 8px; width: 11px; height: 11px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 4px #fffaf1; }
+    .event time { color: var(--red); font-weight: 700; }
+    .event p { margin: 0; }
+    .event em { display: block; color: var(--muted); font-size: 14px; font-style: normal; }
+    .note {
+      margin-top: 22px;
+      padding: 14px 16px;
+      border-left: 3px solid var(--gold);
+      color: #5f5145;
+      background: #f7eddb;
+      font-size: 14px;
+    }
+
+    .museum-grid, .food-grid, .prep-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .museum-card, .food-card, .check-card { padding: 24px; border-radius: 14px; }
+    .museum-card.primary { border-top: 4px solid var(--red); }
+    .museum-card.alt { border-top: 4px solid var(--gold); }
+    .museum-card h3, .food-card h3 { margin-top: 12px; }
+    .tag {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 5px;
+      color: var(--green);
+      background: rgba(68,107,89,.1);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .museum-card p, .food-card p, .check-card p { color: var(--muted); font-size: 14px; }
+    .museum-card ul, .check-card ul { margin: 12px 0 0; padding-left: 18px; font-size: 14px; }
+    .museum-card a { font-size: 13px; }
+    .food-card { min-height: 190px; }
+    .food-card .big { font: 700 42px/1 "STKaiti", "KaiTi", serif; color: var(--red); }
+
+    .weather-panel {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 24px;
+      padding: 30px;
+      border-radius: 18px;
+      color: #f7f0e5;
+      background: #3e594c;
+      box-shadow: var(--shadow);
+    }
+    .weather-panel h3 { font: 700 32px/1.2 "STKaiti", "KaiTi", serif; }
+    .weather-panel p { color: rgba(255,255,255,.76); }
+    .weather-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .weather-list div { padding: 13px; border: 1px solid rgba(255,255,255,.13); border-radius: 9px; background: rgba(255,255,255,.06); font-size: 14px; }
+
+    .check-card label { display: flex; gap: 9px; align-items: flex-start; cursor: pointer; }
+    .check-card input { margin-top: 6px; accent-color: var(--red); }
+    .check-card label + label { margin-top: 10px; }
+    .footer {
+      padding: 34px 0 60px;
+      color: #d8cabe;
+      background: #302925;
+    }
+    .footer-inner { display: flex; justify-content: space-between; gap: 24px; align-items: end; }
+    .footer strong { color: white; font-family: "STKaiti", "KaiTi", serif; font-size: 25px; }
+    .print {
+      padding: 10px 15px;
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 7px;
+      color: white;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; padding-top: 55px; }
+      .hero-art { min-height: 250px; }
+      .mountain { height: 280px; top: 20px; }
+      .summary-grid, .route-strip { grid-template-columns: repeat(2, 1fr); }
+      .route-stop:nth-child(2) { border-right: 0; }
+      .route-stop::before { display: none; }
+      .museum-grid, .food-grid, .prep-grid { grid-template-columns: 1fr 1fr; }
+      .weather-panel { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 620px) {
+      .shell { width: min(100% - 22px, 1180px); }
+      .hero { min-height: 680px; }
+      .hero-inner { gap: 0; padding-bottom: 70px; }
+      .stamp { width: 82px; height: 82px; font-size: 19px; }
+      .summary-grid, .route-strip, .museum-grid, .food-grid, .prep-grid, .weather-list { grid-template-columns: 1fr; }
+      .route-stop { border-right: 0; border-bottom: 1px solid var(--line); }
+      .day-card { grid-template-columns: 1fr; }
+      .day-label { min-height: 160px; }
+      .event { grid-template-columns: 70px 1fr; }
+      .section-head, .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+    @media print {
+      nav, .print { display: none; }
+      body { background: white; }
+      .hero { min-height: auto; }
+      .hero-inner { padding: 40px 0; }
+      .hero-art { display: none; }
+      main { padding: 30px 0; }
+      section { break-inside: avoid; margin-bottom: 38px; }
+      .day-card, .summary-card, .museum-card, .food-card, .check-card { box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="shell hero-inner">
+      <div>
+        <div class="eyebrow">CHANGSHA · DRAGON BOAT HOLIDAY · 2026</div>
+        <h1>长沙<br>慢慢游</h1>
+        <p class="hero-copy">一日一个片区，不赶场、不跨城。用三天认识长沙的市井烟火、岳麓文脉与湘江艺术。</p>
+        <div class="hero-meta">
+          <span class="pill">6 月 18 日 13:00 抵达</span>
+          <span class="pill">6 月 21 日 09:00 离开</span>
+          <span class="pill">3 晚 · 休闲游</span>
+          <span class="pill">建议住五一广场外围</span>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="stamp">湘江<br>岳麓</div>
+        <svg class="mountain" viewBox="0 0 620 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M-20 302C52 246 92 242 148 255C220 272 250 193 306 191C359 190 389 252 438 240C502 224 531 128 649 106V380H-20V302Z" fill="rgba(38,20,20,.28)"/>
+          <path d="M-40 317C40 282 101 285 154 299C222 318 286 257 340 261C405 267 458 312 512 286C564 260 595 235 658 226V380H-40V317Z" fill="rgba(29,15,18,.45)"/>
+          <path d="M53 295C164 274 222 329 322 304C433 277 490 308 609 276" stroke="rgba(255,240,211,.45)" stroke-width="2"/>
+          <path d="M103 273V197M95 197H111M98 188H108M101 178H105" stroke="rgba(255,240,211,.72)" stroke-width="3"/>
+          <path d="M86 207H120L114 218H92L86 207Z" fill="rgba(255,240,211,.7)"/>
+          <circle cx="476" cy="80" r="48" fill="rgba(255,219,155,.72)"/>
+          <circle cx="476" cy="80" r="60" stroke="rgba(255,219,155,.24)" stroke-width="2"/>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <div class="shell nav-inner">
+      <a href="#overview">行程总览</a>
+      <a href="#days">每日规划</a>
+      <a href="#art">美术馆选择</a>
+      <a href="#food">吃什么</a>
+      <a href="#weather">天气策略</a>
+      <a href="#prep">出发清单</a>
+    </div>
+  </nav>
+
+  <main class="shell">
+    <section id="overview">
+      <div class="section-head">
+        <div><div class="kicker">TRIP AT A GLANCE</div><h2>轻松，但不空洞</h2></div>
+        <p class="subtle">每天只进入一个核心片区，午后留出休息时间。抵离时间较紧的首尾两天不安排远距离景点。</p>
+      </div>
+      <div class="summary-grid">
+        <article class="summary-card"><div class="icon">区</div><strong>每日一个片区</strong><span>减少跨城交通与排队消耗</span></article>
+        <article class="summary-card"><div class="icon">食</div><strong>少量多餐</strong><span>小吃分食，正餐主动要求少辣</span></article>
+        <article class="summary-card"><div class="icon">艺</div><strong>两馆为上限</strong><span>艺术日保留咖啡与散步时间</span></article>
+        <article class="summary-card"><div class="icon">雨</div><strong>雨热兼顾</strong><span>上午户外，午后室内与休息</span></article>
+      </div>
+    </section>
+
+    <section>
+      <div class="route-strip" aria-label="行程路线">
+        <div class="route-stop"><b>06.18 · THU</b><strong>五一广场片区</strong><span>IFS、小吃、公交街景</span></div>
+        <div class="route-stop"><b>06.19 · FRI</b><strong>岳麓山片区</strong><span>山林、书院、非遗体验</span></div>
+        <div class="route-stop"><b>06.20 · SAT</b><strong>洋湖艺术片区</strong><span>美术馆、影像、湖边休息</span></div>
+        <div class="route-stop"><b>06.21 · SUN</b><strong>09:00 离开</strong><span>不安排景点，提前出发</span></div>
+      </div>
+    </section>
+
+    <section id="days">
+      <div class="section-head">
+        <div><div class="kicker">DAY BY DAY</div><h2>每日规划</h2></div>
+        <p class="subtle">时间为休闲节奏建议，可按天气、排队和实际抵离站点顺延。</p>
+      </div>
+
+      <article class="day-card">
+        <div class="day-label"><small>抵达与烟火气</small><strong>18</strong><span>周四 · 13:00 抵达</span></div>
+        <div class="day-content">
+          <span class="area">唯一片区：五一广场—黄兴路—坡子街</span>
+          <h3>从长沙的市井与夜色开始</h3>
+          <div class="timeline">
+            <div class="event"><time>13:00</time><p>抵达长沙，前往酒店寄存行李或办理入住。<em>建议为出站、交通与入住预留 60—90 分钟。</em></p></div>
+            <div class="event"><time>15:00</time><p>从五一广场缓慢进入 IFS 国金中心。<em>看城市天际线、商场公共艺术；热门打卡位排队过长可直接放弃。</em></p></div>
+            <div class="event"><time>17:00</time><p>黄兴路与坡子街少量多餐。<em>臭豆腐、糖油粑粑、米粉选 2—3 样分食，不用一次吃齐。</em></p></div>
+            <div class="event"><time>19:00</time><p>坐一段公交看街景，再回五一广场片区散步。<em>在地图中选择 30—45 分钟、少换乘且终点方便回酒店的线路；公交线路以当天实时信息为准。</em></p></div>
+            <div class="event"><time>21:00</time><p>回酒店休息。<em>首日不追加橘子洲或杜甫江阁，给后续两天留体力。</em></p></div>
+          </div>
+          <div class="note">住宿建议：不要住最嘈杂的步行街正中心，优先选五一广场相邻一站地铁、步行可达但夜间相对安静的位置。</div>
+        </div>
+      </article>
+
+      <article class="day-card">
+        <div class="day-label green"><small>山林与湖湘文脉</small><strong>19</strong><span>周五 · 端午节</span></div>
+        <div class="day-content">
+          <span class="area">唯一片区：岳麓山—岳麓书院—湖南大学</span>
+          <h3>不追求登顶，重点感受山林与书院</h3>
+          <div class="timeline">
+            <div class="event"><time>08:00</time><p>早餐后前往岳麓山南门。<em>端午客流大，尽量早到；带水、防滑鞋和驱蚊用品。</em></p></div>
+            <div class="event"><time>09:00</time><p>岳麓书院与爱晚亭慢游。<em>岳麓书院始建于北宋开宝九年，是中国书院传统的重要代表。</em></p></div>
+            <div class="event"><time>11:30</time><p>湖南大学周边午餐，随后午休。<em>天气闷热时不登顶，不把“爬完岳麓山”当作任务。</em></p></div>
+            <div class="event"><time>14:30</time><p>预约一场非遗手作体验。<em>优先选择湘绣、棕编、剪纸、长沙窑陶艺或传统香囊；地点尽量选大学城/河西片区。</em></p></div>
+            <div class="event"><time>17:30</time><p>在大学城吃饭，之后直接回酒店。<em>如遇大雨，将全天重心改为书院、非遗体验和茶馆。</em></p></div>
+          </div>
+          <div class="note">预约策略：非遗体验通常需要提前联系具体工作室。确认开课时间、耗时、是否可带走作品，以及端午节是否营业。</div>
+        </div>
+      </article>
+
+      <article class="day-card">
+        <div class="day-label gold"><small>艺术与湘江南岸</small><strong>20</strong><span>周六 · 室内为主</span></div>
+        <div class="day-content">
+          <span class="area">唯一片区：靳江—洋湖艺术片区</span>
+          <h3>主看两馆，第三馆只做替换</h3>
+          <div class="timeline">
+            <div class="event"><time>09:30</time><p>湖南美术馆。<em>先看近期展览信息，挑感兴趣的展厅，不要求完整走完。</em></p></div>
+            <div class="event"><time>12:00</time><p>片区内午餐与咖啡休息。<em>至少留出 90 分钟恢复注意力。</em></p></div>
+            <div class="event"><time>14:00</time><p>李自健美术馆。<em>以油画常设展、建筑空间和湖边休息为主；常规信息为周一闭馆、10:00—17:30 开放，临行仍需复核。</em></p></div>
+            <div class="event"><time>16:30</time><p>视体力决定：洋湖湿地短走，或将第二馆替换为谢子龙影像艺术馆。<em>不要在一天内硬看三馆。</em></p></div>
+            <div class="event"><time>19:00</time><p>最后一顿湘菜，早回酒店整理行李。<em>次日 09:00 离开，建议今晚确认交通与叫车时间。</em></p></div>
+          </div>
+          <div class="note">三馆都位于湘江西岸南部，仍建议使用网约车完成馆际移动。展览、预约和开放时间可能临时调整，以各馆官方渠道为准。</div>
+        </div>
+      </article>
+
+      <article class="day-card">
+        <div class="day-label dark"><small>从容离开</small><strong>21</strong><span>周日 · 09:00 离开</span></div>
+        <div class="day-content">
+          <span class="area">不安排景点</span>
+          <h3>早起、退房、前往车站或机场</h3>
+          <div class="timeline">
+            <div class="event"><time>建议</time><p>前一晚完成行李整理，并向酒店确认早餐与退房方式。</p></div>
+            <div class="event"><time>预留</time><p>长沙南站建议至少提前 60 分钟抵达；机场建议至少提前 2 小时抵达。<em>具体出发时间按住宿地点、交通方式与票面要求倒推。</em></p></div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section id="art">
+      <div class="section-head">
+        <div><div class="kicker">ART DAY</div><h2>美术馆怎么选</h2></div>
+        <p class="subtle">20 日建议选择湖南美术馆 + 李自健美术馆。谢子龙影像艺术馆作为摄影兴趣或临时展览更合适时的替换项。</p>
+      </div>
+      <div class="museum-grid">
+        <article class="museum-card primary">
+          <span class="tag">上午主选</span><h3>湖南美术馆</h3>
+          <p>湖南规模较大的专业公共美术馆，适合通过专题展认识湖湘美术与当代艺术。</p>
+          <ul><li>地址：岳麓区靳江路 2 号</li><li>先查近期展览与预约要求</li><li>建议停留：1.5—2 小时</li></ul>
+          <a href="http://www.hnmsg.net/" target="_blank" rel="noopener">查看官方信息</a>
+        </article>
+        <article class="museum-card primary">
+          <span class="tag">下午主选</span><h3>李自健美术馆</h3>
+          <p>位于洋湖湿地片区，包含李自健油画常设展、书法空间、书店与临水建筑空间。</p>
+          <ul><li>地址：潇湘南路一段 385 号</li><li>常规为周一闭馆</li><li>建议停留：2—2.5 小时</li></ul>
+          <a href="http://www.lizijianmsg.com/" target="_blank" rel="noopener">查看官方信息</a>
+        </article>
+        <article class="museum-card alt">
+          <span class="tag">替换选项</span><h3>谢子龙影像艺术馆</h3>
+          <p>与李自健美术馆相邻，以摄影、历史影像和当代视觉艺术为主，建筑本身也很适合观看。</p>
+          <ul><li>地址：潇湘南路一段 387 号</li><li>更适合摄影与建筑爱好者</li><li>建议停留：1.5—2 小时</li></ul>
+          <a href="https://www.x-museum.com/" target="_blank" rel="noopener">查看官方信息</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="food">
+      <div class="section-head">
+        <div><div class="kicker">EAT SMART</div><h2>长沙味道，慢慢吃</h2></div>
+        <p class="subtle">三天不需要追完所有网红店。核心原则是少量多餐、避开长队、连续重辣之间穿插清淡早餐。</p>
+      </div>
+      <div class="food-grid">
+        <article class="food-card"><div class="big">粉</div><h3>早餐</h3><p>长沙米粉、肉丝粉或原汤粉。适合作为每天稳定、清淡一点的开始。</p></article>
+        <article class="food-card"><div class="big">小</div><h3>街头小吃</h3><p>臭豆腐、糖油粑粑、葱油粑粑。两人分食，排队超过 20 分钟就换一家。</p></article>
+        <article class="food-card"><div class="big">湘</div><h3>正餐</h3><p>辣椒炒肉、小炒黄牛肉、剁椒鱼头。点菜时主动询问辣度，避免每道都重辣。</p></article>
+      </div>
+    </section>
+
+    <section id="weather">
+      <div class="weather-panel">
+        <div>
+          <div class="kicker" style="color:#e7c887">JUNE WEATHER</div>
+          <h3>长沙六月：雨、热、湿度都要考虑</h3>
+          <p>长期气候上，六月降雨较多且逐渐闷热。临行前 72 小时再看逐小时预报和暴雨预警，户外行程放上午。</p>
+          <a href="https://www.nmc.cn/" target="_blank" rel="noopener" style="color:#f4d69b">中央气象台天气与预警</a>
+        </div>
+        <div class="weather-list">
+          <div><strong>鞋</strong><br>选择防滑、快干、已经穿习惯的鞋。</div>
+          <div><strong>雨</strong><br>折叠伞 + 轻薄雨衣，强对流时立即进室内。</div>
+          <div><strong>热</strong><br>岳麓山尽量上午游览，午后安排室内。</div>
+          <div><strong>行程</strong><br>大雨时取消爬山，把重点改为书院与非遗体验。</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="prep">
+      <div class="section-head">
+        <div><div class="kicker">BEFORE YOU GO</div><h2>出发前清单</h2></div>
+        <p class="subtle">勾选状态只保存在当前浏览器页面会话中，刷新后可能重置。</p>
+      </div>
+      <div class="prep-grid">
+        <article class="check-card"><h3>提前预约</h3>
+          <label><input type="checkbox"> 岳麓山 / 岳麓书院当日政策</label>
+          <label><input type="checkbox"> 非遗体验工作室与课程时间</label>
+          <label><input type="checkbox"> 三座美术馆的展览与开放公告</label>
+        </article>
+        <article class="check-card"><h3>行李</h3>
+          <label><input type="checkbox"> 身份证、车票或机票信息</label>
+          <label><input type="checkbox"> 折叠伞、轻薄雨衣、防滑鞋</label>
+          <label><input type="checkbox"> 防晒、驱蚊、肠胃常用药</label>
+        </article>
+        <article class="check-card"><h3>最后确认</h3>
+          <label><input type="checkbox"> 6 月 17 日查看逐小时天气</label>
+          <label><input type="checkbox"> 6 月 20 日晚预约次日交通</label>
+          <label><input type="checkbox"> 按实际车站 / 机场倒推离店时间</label>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell footer-inner">
+      <div><strong>长沙，慢慢游。</strong><br><span>规划版本：2026-06-11 · 开放时间与交通线路以临行官方信息为准</span></div>
+      <button class="print" onclick="window.print()">打印 / 导出 PDF</button>
+    </div>
+  </footer>
+</body>
+</html>
